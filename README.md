@@ -1,5 +1,5 @@
 ## Layihənin təsviri
-Istiqraz ödəniş tarixləri və istiqraz sifarişin faiz ödəmələri üçün kiçik bir layihəni həyata keçirməlisiniz. Layihə çərçivəsində dörd APİ yaratmalısınız.
+Istiqraz ödəniş tarixləri və istiqraz sifarişin faiz ödəmələri üçün kiçik bir layihəni həyata keçirməlisiniz. Layihə çərçivəsində dörd API yaratmalısınız.
 
 ## Ümumi təsvir
 - Zəhmət olmasa müasir PHP framework-dən istifadə etməklə istiqraz layihəsini tətbiq edin.
@@ -7,7 +7,7 @@ Istiqraz ödəniş tarixləri və istiqraz sifarişin faiz ödəmələri üçün
 - Proyektin içərisində database yaratmaq üçün SQL script və ya migrasiya scripti olmalıdır. Layihə üçün database cədvəl strukturunu özünüz yaratmalısınız.
 - Bütün PHP asılılıqlar “composer”-in köməyi ilə yüklənməlidir (bu halda composer.json repozitoriyaya əlavə etməyi unutmayın)
 - Layihəni başlatmaq üçün təlimatı (INSTALL.MD) yazmağı unutmayın.
-- APİ istifadəsi ilə bağlı misalları README.MD yazmağı unutmayın.
+- API istifadəsi ilə bağlı misalları README.MD yazmağı unutmayın.
 
 
 ## Obyektlər
@@ -34,7 +34,7 @@ Sifariş sayı | digit
 ## API
  
 ### İstiqrazin Faiz Ödənilmə Tarixləri
-İstiqrazın faiz ödəniş tarixlərini göstərən APİ hazırlamaq lazımdır.
+İstiqrazın faiz ödəniş tarixlərini göstərən API hazırlamaq lazımdır.
 
 `GET /bond/<id>/payouts`
 
@@ -65,7 +65,7 @@ Düşdüyü halda gələn bazar ertəsi istifadə olunmalıdır.
 - Alış qiyməti “Nominal Qiymət”-dən az ola bilməz.
 
 ## İstiqrazin Sifarişinin Faiz Ödənişləri
-İstiqraz sifarişin faiz ödənişlərinin məbləğlərini göstərən APİ hazırlamaq lazımdır.
+İstiqraz sifarişin faiz ödənişlərinin məbləğlərini göstərən API hazırlamaq lazımdır.
 
 `POST /bond/order/<order_id>`
 
@@ -88,7 +88,7 @@ Misal üçün “Öncəki faiz hesablama tarixi”  = 06.02.2021, növbəti faiz
 
 ## Nümunə məlumatları
 
-Siz üç ədəd istiqraz və hər istiqraz üçün bir ədəd sifariş yaradmalısınız.
+Siz minimum üç ədəd istiqraz və hər istiqraz üçün minimum bir ədəd sifariş yaradmalısınız.
 
 ```
 Emissiya tarixi: 2021-11-08
