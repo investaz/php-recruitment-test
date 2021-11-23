@@ -36,6 +36,8 @@ Sifariş sayı | digit
 ### İstiqrazin Faiz Ödənilmə Tarixləri
 İstiqrazın faiz ödəniş tarixlərini göstərən APİ hazırlamaq lazımdır.
 
+`GET /bond/<id>/payouts`
+
 Tarixləri hesablamaq üçün aşağıdaki formuladan istifadə edin.
 
 **365 periodu üçün:**
@@ -56,12 +58,16 @@ Düşdüyü halda gələn bazar ertəsi istifadə olunmalıdır.
 
 ## İstiqrazin Aliş Sifarişinin Yaradilmasi
 
+`POST /bond/<id>/order`
+
 - Alış tarixi “Emissiya tarixi”-dən  az ola bilməz.
 - Alış tarix “Son tədavül tarixi”-dən cox ola bilməz.
 - Alış qiyməti “Nominal Qiymət”-dən az ola bilməz.
 
 ## İstiqrazin Sifarişinin Faiz Ödənişləri
 İstiqraz sifarişin faiz ödənişlərinin məbləğlərini göstərən APİ hazırlamaq lazımdır.
+
+`POST /bond/order/<order_id>`
 
 Burada siz İstiqrazdan faiz ödənilmə tarixlərini almalısınız, daha sonra aşağıdakı hesablamanı etməlisiniz: 
 
@@ -80,8 +86,41 @@ Misal üçün “Öncəki faiz hesablama tarixi”  = 06.02.2021, növbəti faiz
 
 `“Keçmiş gün sayı” = (08.03.2021 - 06.02.2021) = 30 gün.`
 
+## Nümunə məlumatları
 
+Siz üç ədəd istiqraz və hər istiqraz üçün bir ədəd sifariş yaradmalısınız.
 
+```
+Emissiya tarixi: 2021-11-08
+Son tədavül tarixi	2022-11-03
+Nominal Qiymət: 100
+Kuponların ödənilmə tezliyi:	4
+Faizlərin hesablanma periodu:	360
+Kupon faizi: 10%
+```
 
+```
+Emissiya tarixi: 2021-11-08
+Son tədavül tarixi	2022-11-07
+Nominal Qiymət: 200
+Kuponların ödənilmə tezliyi:	4
+Faizlərin hesablanma periodu:	364
+Kupon faizi: 20%
+```
+
+```
+Emissiya tarixi: 2021-11-08
+Son tədavül tarixi	2022-11-08
+Nominal Qiymət: 300
+Kuponların ödənilmə tezliyi:	4
+Faizlərin hesablanma periodu:	365
+Kupon faizi: 30%
+```
+
+Sifariş xüsusiyyətləri.
+```
+Sifariş tarixi:2021-11-23
+Sifariş sayı:10
+```
 
 
