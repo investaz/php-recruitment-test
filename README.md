@@ -80,7 +80,6 @@ Düşdüyü halda gələn bazar ertəsi istifadə olunmalıdır.
 **Aşağıdaki yoxlamaları təmin etmək lazımdır:**
 - Alış tarixi “Emissiya tarixi”-dən  az ola bilməz.
 - Alış tarix “Son tədavül tarixi”-dən cox ola bilməz.
-- Alış qiyməti “Nominal Qiymət”-dən az ola bilməz.
 
 **API aşağıdaki məlumatları POST ilə almalıdır:**
 - Sifariş tarixi | Y-m-d
