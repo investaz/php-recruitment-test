@@ -56,13 +56,36 @@ periodun müddətini **gün ilə** = `12 / “Kuponların ödənilmə tezliyi”
 
 Düşdüyü halda gələn bazar ertəsi istifadə olunmalıdır.
 
+#### API cavabı aşağıdaki kimi olmalıdır:
+```json
+{
+   "dates":[
+      {
+         "date":"2020-10-15"
+      },
+      {
+         "date":"2020-11-16"
+      },
+      {
+         "date":"2020-12-16"
+      }
+   ]
+}
+```
+
 ## İstiqrazin Aliş Sifarişinin Yaradilmasi
 
 `POST /bond/<id>/order`
 
+**Aşağıdaki yoxlamaları təmin etmək lazımdır:**
 - Alış tarixi “Emissiya tarixi”-dən  az ola bilməz.
 - Alış tarix “Son tədavül tarixi”-dən cox ola bilməz.
 - Alış qiyməti “Nominal Qiymət”-dən az ola bilməz.
+
+**API aşağıdaki məlumatları POST ilə almalıdır:**
+- Sifariş tarixi | Y-m-d
+- Sifariş sayı | digit
+
 
 ## İstiqrazin Sifarişinin Faiz Ödənişləri
 İstiqraz sifarişin faiz ödənişlərinin məbləğlərini göstərən API hazırlamaq lazımdır.
@@ -85,6 +108,26 @@ Misal üçün “Sifariş tarixi”  = 14.01.2021, növbəti faiz ödənişi is�
 Misal üçün “Öncəki faiz hesablama tarixi”  = 06.02.2021, növbəti faiz ödənişi isə 08.03.2021, o zaman:
 
 `“Keçmiş gün sayı” = (08.03.2021 - 06.02.2021) = 30 gün.`
+
+#### API cavabı aşağıdaki kimi olmalıdır:
+```json
+{
+   "payouts":[
+      {
+         "date":"2020-10-15",
+         "amount":135.6164
+      },
+      {
+         "date":"2020-11-16",
+         "amount":144.6575
+      },
+      {
+         "date":"2020-12-16",
+         "amount":135.6164
+      }
+   ]
+}
+```
 
 ## Nümunə məlumatları
 
