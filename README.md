@@ -178,7 +178,7 @@ Kupon faizi: 30%
 Sifariş xüsusiyyətləri.
 ```
 Sifariş tarixi:2021-11-23
-Sifariş sayı:10
+Alınan istiqraz sayı:10
 ```
 
 
