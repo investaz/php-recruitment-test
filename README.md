@@ -1,7 +1,12 @@
 ## Layihənin təsviri
-Istiqraz ödəniş tarixləri və istiqraz sifarişin faiz ödəmələri üçün kiçik bir layihəni həyata keçirməlisiniz. Layihə çərçivəsində dörd API yaratmalısınız.
 
-## Ümumi təsvir
+- İstiqrazın faiz ödənilmə tarixləri
+- İstiqrazın alış sifarişin faiz ödəmələri 
+
+hesablayıb göstərilməsi üçün kiçik bir layihəni həyata keçirməlisiniz. 
+Layihə çərçivəsində dörd API yaratmalısınız.
+
+## Tələblər
 - Zəhmət olmasa müasir PHP framework-dən istifadə etməklə istiqraz layihəsini tətbiq edin.
 - Hər tapşırığı bitirdikdən sonra, dəyişiklikləri commit etməyi unutmayın.
 - Proyektin içərisində database yaratmaq üçün SQL script və ya migrasiya scripti olmalıdır. Layihə üçün database cədvəl strukturunu özünüz yaratmalısınız.
@@ -24,12 +29,12 @@ Faizlərin hesablanma periodu | 360, 364, 365
 Kupon faizi | 0-100
 
 ### Alış sifarişi obyekti
-İstiqraz sifarişin aşağıdakı xüsusiyyətləri vardır: 
+İstiqraz alış sifarişin aşağıdakı xüsusiyyətləri vardır: 
 
 Xüsusiyyət | Qəbul edilən dəyər
 -- | --
 Sifariş tarixi | Y-m-d
-Sifariş sayı | digit
+Alınan istiqraz sayı | digit
 
 ## API
  
@@ -38,23 +43,33 @@ Sifariş sayı | digit
 
 `GET /bond/<id>/payouts`
 
-Tarixləri hesablamaq üçün aşağıdaki formuladan istifadə edin.
+Tarixləri müəyyən etmək üçün ilk öncə periodları hesablamaq lazımdır.
 
-**365 periodu üçün:**
+Period "Kuponların ödənilmə tezliyi" və "Faizlərin hesablanma periodu" əsasında hesablanır.
 
-periodun müddətini **ay ilə** = `12 / “Kuponların ödənilmə tezliyi”`;
+Aşağıdaki formuladan istifadə edin.
 
-**364 periodu üçün:**
+```php
+switch ($FaizlərinHesablanmaPeriodu) {
+    case 360:
+        $periodunMüddətiniGünİlə = 12 / “Kuponların ödənilmə tezliyi” * 30;
+        break;
+    case 364:
+        $periodunMüddətiniGünİlə = 364 / “Kuponların ödənilmə tezliyi”;
+        break;
+    case 365:
+        $periodunMüddətiniAyİlə = 12 / “Kuponların ödənilmə tezliyi”;
+        break;
+}
+```
+Faiz Ödənilmə Tarixləri "Emissiya tarixi" və "Son tədavül tarixi" aralarında olur.
 
-periodun müddətini **gün ilə** = `364 / “Kuponların ödənilmə tezliyi”`;
-
-**360 periodu üçün:**
-
-periodun müddətini **gün ilə** = `12 / “Kuponların ödənilmə tezliyi” / * 30`;
+Tarixləri hesablamaq üçün "Emissiya tarixi" üzərinə period əlavə etmək lazımdır. 
 
 Ödəniş tarixləri şənbə və bazar günləri düşməməlidir. 
 
 Düşdüyü halda gələn bazar ertəsi istifadə olunmalıdır.
+
 
 #### API cavabı aşağıdaki kimi olmalıdır:
 ```json
@@ -83,7 +98,7 @@ Düşdüyü halda gələn bazar ertəsi istifadə olunmalıdır.
 
 **API aşağıdaki məlumatları POST ilə almalıdır:**
 - Sifariş tarixi | Y-m-d
-- Sifariş sayı | digit
+- Alınan istiqraz sayı | digit
 
 
 ## İstiqrazin Sifarişinin Faiz Ödənişləri
