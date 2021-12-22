@@ -1,10 +1,11 @@
 ## Layihənin təsviri
 
-- İstiqrazın faiz ödənilmə tarixləri
-- İstiqrazın alış sifarişin faiz ödəmələri 
+- İstiqrazin Faiz Ödənilmə Tarixləri
+- İstiqrazin Aliş Sifarişinin Yaradilmasi
+- İstiqrazin Sifarişinin Faiz Ödənişləri
 
 hesablayıb göstərilməsi üçün kiçik bir layihəni həyata keçirməlisiniz. 
-Layihə çərçivəsində dörd API yaratmalısınız.
+Layihə çərçivəsində üç API yaratmalısınız.
 
 ## Tələblər
 - Zəhmət olmasa müasir PHP framework-dən istifadə etməklə istiqraz layihəsini tətbiq edin.
@@ -38,7 +39,7 @@ Alınan istiqraz sayı | digit
 
 ## API
  
-### İstiqrazin Faiz Ödənilmə Tarixləri
+## 1. İstiqrazin Faiz Ödənilmə Tarixləri
 İstiqrazın faiz ödəniş tarixlərini göstərən API hazırlamaq lazımdır.
 
 `GET /bond/<id>/payouts`
@@ -88,7 +89,7 @@ Düşdüyü halda gələn bazar ertəsi istifadə olunmalıdır.
 }
 ```
 
-## İstiqrazin Aliş Sifarişinin Yaradilmasi
+## 2. İstiqrazin Aliş Sifarişinin Yaradilmasi
 
 `POST /bond/<id>/order`
 
@@ -101,7 +102,7 @@ Düşdüyü halda gələn bazar ertəsi istifadə olunmalıdır.
 - Alınan istiqraz sayı | digit
 
 
-## İstiqrazin Sifarişinin Faiz Ödənişləri
+## 3. İstiqrazin Sifarişinin Faiz Ödənişləri
 İstiqraz sifarişin faiz ödənişlərinin məbləğlərini göstərən API hazırlamaq lazımdır.
 
 `POST /bond/order/<order_id>`
